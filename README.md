@@ -29,3 +29,9 @@ benchmark (n=1000)
 	  0.950000   0.010000   0.960000 (  0.959077)
 
 >1ms per search
+
+
+Todo
+-----
+Graduate the JS example to a real library
+Add localstorage to the JS demo to store generated search index so only the source strings are downloaded
