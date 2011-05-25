@@ -69,6 +69,8 @@
 				
 				var res  = $('#search').val().toString().ngrams(3);
 				
+				$('#trigrams').html(res.join(", "))
+				
 				var r1 = []				
 				_.each(res, function(gram){ 
 					r1.push(trigram[gram]); 
@@ -97,6 +99,7 @@
 	
 	<input type="text" id="search" /> 
 	<input type="submit" id="submit" />	
+	<div id="trigrams">&nbsp;</div>
 	<div id="resultatos">&nbsp;</div> 
 </body> 
  
