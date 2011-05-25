@@ -9,18 +9,18 @@ It's a proof of concept, but the index generated could be used for high speed te
 examples
 ---------
 
-  cd examples
-  ruby spanish_municipalities.rb
+		cd examples
+  	ruby spanish_municipalities.rb
 
 
 benchmark (n=1000)
 ---------
 
-  cd examples
-  ruby benchmark.rb
+  	cd examples
+  	ruby benchmark.rb
 
-      user     system      total        real
-  0.950000   0.010000   0.960000 (  0.959077)
+	      user     system      total        real
+	  0.950000   0.010000   0.960000 (  0.959077)
 
 >1ms per search
 
