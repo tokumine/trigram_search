@@ -73,7 +73,8 @@ class String
   def to_trigrams
     trigrams = Set.new    
     self.clean_up.split.each do |p|
-        word = "  " + p.downcase + "  "
+#        word = "  " + p.downcase + "  "
+        word = p.downcase
         (0..word.length - 3).each do |idx|
             trigrams.add(word[idx, 3])
         end
