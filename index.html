@@ -1,1 +1,100 @@
-My GitHub Page
+
+<html> 
+<head> 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script> 
+	<script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>	
+	
+	<script> 
+	
+		$(document).ready(function(){
+			
+			String.prototype.ngrams = function(n) {
+			  var r = [];
+			  for(var i = 0; i <= this.length - n; i++)
+			     r.push(this.substring(i, i + n));
+			  return r;
+			}
+ 
+			Array.prototype.grep = function(re) {
+			   var r = [];
+			   for(var i = 0; i < this.length; i++)   
+			       if(re.test(this[i]))
+			          r.push(this[i]);
+			   return r;
+			}
+			
+			function sortByFrequencyAndRemoveDuplicates(array) {
+			    var frequency = {}, value;
+ 
+			    // compute frequencies of each value
+			    for(var i = 0; i < array.length; i++) {
+			        value = array[i];
+			        if(value in frequency) {
+			            frequency[value]++;
+			        }
+			        else {
+			            frequency[value] = 1;
+			        }
+			    }
+ 
+			    // make array from the frequency object to de-duplicate
+			    var uniques = [];
+			    for(value in frequency) {
+			        uniques.push(value);
+			    }
+ 
+			    // sort the uniques array in descending order by frequency
+			    function compareFrequency(a, b) {
+			        return frequency[b] - frequency[a];
+			    }
+ 
+			    return uniques.sort(compareFrequency);
+			}
+			
+			
+			var search_db;
+			var trigram;
+			$.get('search_db.json', function(data){
+				search_db = JSON.parse(data);
+			});
+			$.get('trigram.json', function(data){
+				trigram = JSON.parse(data);
+				$('#status').html("ready to search");
+			});		
+			
+			$('#search').keyup(function(){
+				
+				var res  = $('#search').val().toString().ngrams(3);
+				
+				var r1 = []				
+				_.each(res, function(gram){ 
+					r1.push(trigram[gram]); 
+				});
+				
+				results = _.compact(_.flatten(r1)) 
+				ranked_results = sortByFrequencyAndRemoveDuplicates(results)
+				
+				ranked_results = ranked_results.splice(0,10);
+				
+				var output = []				
+				_.each(ranked_results, function(id){ 
+					output.push(search_db[id]); 
+				})
+				$('#resultatos').html(output.join("<br>"));					
+			});
+			
+			$('#search').focus();
+		});			
+	</script> 
+</head>	
+ 
+ 
+<body> 
+	<div id="status"></div> 
+	
+	<input type="text" id="search" /> 
+	<input type="submit" id="submit" />	
+	<div id="resultatos">&nbsp;</div> 
+</body> 
+ 
+</html>
