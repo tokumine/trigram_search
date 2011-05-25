@@ -1,6 +1,8 @@
 Trigram Search
 ===============
 
+**DEMO: http://tokumine.github.com/trigram_search/**
+
 A Ruby class to generate a trigram substring inverted index for a set of strings provided in a CSV.
 
 The index generated could be used for high speed text matching, such as in autocompletes, or in search services. You could, for example, dump the indexes to JSON and use them client side.
