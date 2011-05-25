@@ -12,9 +12,10 @@ It's a proof of concept, but the index generated could be used for high speed te
 examples
 ---------
 
-		cd examples
+	cd examples
   	ruby spanish_municipalities.rb
 
+There is a Javascript example which uses the generated search index here: http://tokumine.github.com/trigram_search/
 
 benchmark (n=1000)
 ---------
