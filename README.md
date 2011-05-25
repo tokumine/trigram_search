@@ -5,6 +5,9 @@ A quick Ruby class to demo Trigram substring inverted index search on a set of s
 
 It's a proof of concept, but the index generated could be used for high speed text matching, such as in autocompletes, or in search services. You could, for example, dump the indexes to JSON and use them client side.
 
+* http://en.wikipedia.org/wiki/Inverted_index
+* http://en.wikipedia.org/wiki/Substring_index
+* http://en.wikipedia.org/wiki/N-gram
 
 examples
 ---------
